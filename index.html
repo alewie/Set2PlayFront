@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Set2Play</title>
+    <meta name="description" content="Convert setlists into playlists" >
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="Public/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="Public/stylesheets/main.css">
+
+  </head>
+    <body>
+      <div class="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <a class="navbar-brand navsize" href="./index.html">Set2Play</a>
+            <button class="navbar-toggler navsize" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav float-right">
+                <li class="nav-item navsize">
+                  <a class="nav-link navsize" href="./about.html">About</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+
+        <div class="container margintop4">
+          <h1>This is the index page</h1>
+        </div>
+
+        <div class="container">
+          <div class="form-row">
+            <div class="col">
+              <input type="text" class="form-control userInput" placeholder="Enter Artist Name (eg: 'Iron Maiden')" id="userInput" name="setlistSelector">
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-primary submit">Get Setlist</button>
+              <button class="btn btn-success submit" id="createBut">Create Playlist</button>
+            </div>
+          </div>
+          <form class="RadioSetlist">
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="typeSelector" id="artist" value="Enter Artist Name (eg: 'Iron Maiden')" checked>
+              <label class="form-check-label" for="artist">
+                Search by artist name
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="typeSelector" id="setlistId" value="Enter Setlist ID (eg '7386b2d9')">
+              <label class="form-check-label" for="setlistId">
+                Search by setlist ID
+              </label>
+            </div>
+          </form>
+        </div>
+
+        <div class="container">
+          <p class="results"></p>
+        </div>
+        
+
+
+      </div>
+      <footer class="footer">
+              <span class="text-muted">Copyright Alex W. For any more info please use the contact us form.</span>               
+      </footer>
+      <div id="dz-root"></div>
+      <script src="https://cdns-files.dzcdn.net/js/min/dz.js"></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <script src="./Public/index.js"></script>
+  </body>
+</html>
