@@ -55,13 +55,10 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
   idArray = [];
   for(i=0; i< nb_tracks; i++)
   {
-    //Need to change that with Actual CORS
-    //Remove AWAIT when we can do playlist
-    //TODO remove and use deezer SDK
-    await axios.get("https://api.deezer.com/search?q=artist:\"" +artist+ "\" track:\""+ tracks[i]+ "\"")
-    .then(function(response)
+    //ID array doesn't work!!!!
+    DZ.api("/search?q=artist:\"" +artist+ "\" track:\""+ tracks[i]+ "\"", function(response)
     {
-      var results = response.data.data
+      var results = response.data
       if (results.length)
       {
         console.log(results[0].title);
