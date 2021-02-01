@@ -62,7 +62,7 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
         console.log(results[0].title);
         idArray[i]=results[0].id;
         //Add to Playlist Here
-        DZ.api("playlist/" + playlistid + "/tracks", {songs : results[0].id } , function(response)
+        DZ.api("playlist/8684788082/tracks", {songs : results[0].id } , function(response)
         {
           console.log(response);
         })
