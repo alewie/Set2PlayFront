@@ -53,6 +53,9 @@ function getRadiobuttonVal (){
 async function getDeezerTrackId(artist, tracks, nb_tracks)
 {
   idArray = [];
+  DZ.api('user/me/playlists', 'POST', {title : "test"}, function(response){
+	  console.log("My new playlist ID", response.id);
+  });
   for(i=0; i< nb_tracks; i++)
   {
     //ID array doesn't work!!!!
