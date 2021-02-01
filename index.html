@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="Public/stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="Public/stylesheets/main.css">
 
+    <script src="https://cdns-files.dzcdn.net/js/min/dz.js"></script>
+
   </head>
     <body>
       <div class="content">
@@ -40,7 +42,7 @@
             <div class="col-auto">
               <button class="btn btn-primary submit">Get Setlist</button>
               <button class="btn btn-success submit" id="createBut">Create Playlist</button>
-              <button class="btn" onclick="login();" value="Login"> Login to Deezer</button>
+              <input type="button" onclick="login();" value="Login" />
             </div>
           </div>
           <form class="RadioSetlist">
@@ -70,7 +72,12 @@
               <span class="text-muted">Copyright Alex W. For any more info please use the contact us form.</span>               
       </footer>
       <div id="dz-root"></div>
-      <script src="https://cdns-files.dzcdn.net/js/min/dz.js"></script>
+      <script>
+        DZ.init({
+            appId  : 444582,
+            channelUrl : 'https://alewie.github.io/Set2PlayFront/channel.html'
+          });
+      </script>
       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
       <script src="./Public/index.js"></script>
   </body>

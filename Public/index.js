@@ -1,13 +1,7 @@
 var setlistTracks = [];
 var setlistArtist;
 var idArray = [];
-
-//Initialise Deezer SDK
-DZ.init({
-  appId  : 444582,
-  channelUrl : 'https://alewie.github.io/Set2PlayFront/channel.html'
-});
-
+var userToken;
 
 document.getElementById("createBut").style.display = "none" ;
 
@@ -86,6 +80,7 @@ document.querySelector("#createBut").addEventListener("click", function(){
 
 function login() {
   DZ.login(function (response) {
+    console.log(response);
       if (response.authResponse) {
           console.log('Welcome!  Fetching your information.... ');
           DZ.api('/user/me', function (response) {
