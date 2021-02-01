@@ -46,14 +46,15 @@ function getRadiobuttonVal (){
 
 async function getDeezerTrackId(artist, tracks, nb_tracks)
 {
+  var playlistId = 0;
   idArray = [];
-  DZ.api('user/me/playlists', 'POST', {title : "test"}, function(response){
-	  console.log("My new playlist ID", response.id);
+  await DZ.api('user/me/playlists', 'POST', {title : "test"}, function(response){
+    playlistId = response.id;
   });
   for(i=0; i< nb_tracks; i++)
   {
     //ID array doesn't work!!!!
-    DZ.api("/search?q=artist:\"" +artist+ "\" track:\""+ tracks[i]+ "\"", function(response)
+   await DZ.api("/search?q=artist:\"" +artist+ "\" track:\""+ tracks[i]+ "\"", function(response)
     {
       var results = response.data
       if (results.length)
@@ -61,6 +62,10 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
         console.log(results[0].title);
         idArray[i]=results[0].id;
         //Add to Playlist Here
+        DZ.api("playlist/" + playlistid + "/tracks", {songs : results[0].id } , function(response)
+        {
+          console.log(response);
+        })
       }
       else{
         console.log("track not found");
@@ -78,9 +83,9 @@ document.querySelector("#createBut").addEventListener("click", function(){
 
 });
 
+//Change stuff here before release
 function login() {
   DZ.login(function (response) {
-    console.log(response);
       if (response.authResponse) {
           console.log('Welcome!  Fetching your information.... ');
           DZ.api('/user/me', function (response) {
