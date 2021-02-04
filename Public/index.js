@@ -67,7 +67,6 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
       }
       else{
         console.log("track not found");
-        idArray[i]=0;
         //Highlight in Red in List
       }
       console.log(idArray);
