@@ -1,7 +1,13 @@
 var setlistTracks = [];
 var setlistArtist;
 var idArray = [];
-var userToken;
+
+//Initialise Deezer SDK
+DZ.init({
+  appId  : 444582,
+  channelUrl : 'https://alewie.github.io/Set2PlayFront/channel.html'
+});
+
 
 document.getElementById("createBut").style.display = "none" ;
 
@@ -46,26 +52,18 @@ function getRadiobuttonVal (){
 
 async function getDeezerTrackId(artist, tracks, nb_tracks)
 {
-  var playlistId = 0;
   idArray = [];
-  await DZ.api('user/me/playlists', 'POST', {title : "test"}, function(response){
-    playlistId = response.id;
-  });
   for(i=0; i< nb_tracks; i++)
   {
     //ID array doesn't work!!!!
-   await DZ.api("/search?q=artist:\"" +artist+ "\" track:\""+ tracks[i]+ "\"", function(response)
+    DZ.api("/search?q=artist:\"" +artist+ "\" track:\""+ tracks[i]+ "\"", function(response)
     {
       var results = response.data
       if (results.length)
       {
         console.log(results[0].title);
-        idArray[i]=results[0].id;
+        idArray.push(results[0].id);
         //Add to Playlist Here
-        DZ.api("playlist/8684788082/tracks", {songs : results[0].id } , function(response)
-        {
-          console.log(response);
-        })
       }
       else{
         console.log("track not found");
@@ -83,7 +81,6 @@ document.querySelector("#createBut").addEventListener("click", function(){
 
 });
 
-//Change stuff here before release
 function login() {
   DZ.login(function (response) {
       if (response.authResponse) {
