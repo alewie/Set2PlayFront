@@ -55,7 +55,6 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
   idArray = [];
   for(i=0; i< nb_tracks; i++)
   {
-    //ID array doesn't work!!!!
     DZ.api("/search?q=artist:\"" +artist+ "\" track:\""+ tracks[i]+ "\"", function(response)
     {
       var results = response.data
@@ -64,6 +63,10 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
         console.log(results[0].title);
         idArray.push(results[0].id);
         //Add to Playlist Here
+        DZ.api("playlist/8684741542/tracks", "POST", {songs : results[0].id } , function(response)
+        {
+          console.log(response);
+        })
       }
       else{
         console.log("track not found");
