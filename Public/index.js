@@ -78,11 +78,6 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
         })
       }
     })
-    while (apiCallsDone < nb_tracks)
-    {
-      //Do nothing 
-    }
-    console.log(idArray);
   }
 };
 
