@@ -64,15 +64,18 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
       {
         console.log(results[0].title);
         idArray.push(results[0].id);
-        //Add to Playlist Here
-        DZ.api("playlist/8684741542/tracks", "POST", {songs : results[0].id } , function(response)
-        {
-          console.log(response);
-        })
       }
       else{
         console.log("track not found");
         //Highlight in Red in List
+      }
+      if (apiCallsDone == nb_tracks)
+      {
+        console.log ("HI")
+        DZ.api("playlist/8684741542/tracks", "POST", {songs : idArray } , function(response)
+        {
+          console.log(response);
+        })
       }
     })
     while (apiCallsDone < nb_tracks)
