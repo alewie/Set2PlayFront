@@ -53,11 +53,13 @@ function getRadiobuttonVal (){
 async function getDeezerTrackId(artist, tracks, nb_tracks)
 {
   idArray = [];
+  var apiCallsDone = 0;
   for(i=0; i< nb_tracks; i++)
   {
     DZ.api("/search?q=artist:\"" +artist+ "\" track:\""+ tracks[i]+ "\"", function(response)
     {
       var results = response.data
+      apiCallsDone ++;
       if (results.length)
       {
         console.log(results[0].title);
@@ -72,8 +74,12 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
         console.log("track not found");
         //Highlight in Red in List
       }
-      console.log(idArray);
     })
+    while (apiCallsDone < nb_tracks)
+    {
+      //Do nothing 
+    }
+    console.log(idArray);
   }
 };
 
