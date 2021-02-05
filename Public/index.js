@@ -11,24 +11,27 @@ DZ.init({
 
 document.getElementById("createBut").style.display = "none" ;
 
-
-
- document.querySelector(".RadioSetlist").addEventListener("click", function(){
+document.querySelector(".RadioSetlist").addEventListener("click", function()
+{
     document.querySelector(".userInput").placeholder=document.querySelector(".RadioSetlist")[getRadiobuttonVal()].value ;
 });
 
-document.querySelector(".submit").addEventListener("click", function(){
+document.querySelector(".submit").addEventListener("click", function()
+{
   // need to do sanitization here
   var apiCall ;
-  if(getRadiobuttonVal()==0){
+  if(getRadiobuttonVal()==0)
+  {
     apiCall = "https://set2play.herokuapp.com/api/setlist/from_artist/" ;
   }
-  else if (getRadiobuttonVal() == 1){
+  else if (getRadiobuttonVal() == 1)
+  {
     apiCall = "https://set2play.herokuapp.com/api/setlist/from_id/";
   }
 
   axios.get(apiCall + document.querySelector(".userInput").value)
-  .then(function(response){
+  .then(function(response)
+  {
     //NEED error Management
     setlistTracks = [];
     setlistArtist = document.querySelector(".userInput").value; //TMP ONLY WILL CHANGE API TO RETURN ARTIST NAME TO BE SAFER
@@ -42,10 +45,12 @@ document.querySelector(".submit").addEventListener("click", function(){
   })
 });
 
-function getRadiobuttonVal (){
-  console.log(document.querySelector(".RadioSetlist").length)
-    for (i=0; i< document.querySelector(".RadioSetlist").length; i++){
-        if(document.querySelector(".RadioSetlist")[i].checked){
+function getRadiobuttonVal ()
+{
+    for (i=0; i< document.querySelector(".RadioSetlist").length; i++)
+    {
+        if(document.querySelector(".RadioSetlist")[i].checked)
+        {
           return i;
         }
      }
