@@ -21,14 +21,15 @@ document.querySelector(".submit").addEventListener("click", function(){
   // need to do sanitization here
   var apiCall ;
   if(getRadiobuttonVal()==0){
-    apiCall = "http://localhost:3000/api/setlist/from_artist/" ;
+    apiCall = "https://set2play.herokuapp.com/api/setlist/from_artist/" ;
   }
   else if (getRadiobuttonVal() == 1){
-    apiCall = "http://localhost:3000/api/setlist/from_id/";
+    apiCall = "https://set2play.herokuapp.com/api/setlist/from_id/";
   }
 
   axios.get(apiCall + document.querySelector(".userInput").value)
   .then(function(response){
+    //NEED error Management
     setlistTracks = [];
     setlistArtist = document.querySelector(".userInput").value; //TMP ONLY WILL CHANGE API TO RETURN ARTIST NAME TO BE SAFER
     resultsDisplay = document.querySelector(".results");
@@ -54,34 +55,38 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
 {
   idArray = [];
   var apiCallsDone = 0;
-  for(i=0; i< nb_tracks; i++)
+  DZ.api("/user/me/playlists", "POST", {title : artist + "Set2Play + need to add date"}, function(response)
   {
-    DZ.api("/search?q=artist:\"" +artist+ "\" track:\""+ tracks[i]+ "\"", function(response)
+    //ADD error management
+    var setlistID = response.id;
+    for(i=0; i< nb_tracks; i++)
     {
-      var results = response.data
-      apiCallsDone ++;
-      if (results.length)
+      DZ.api("/search?q=artist:\"" +artist+ "\" track:\""+ tracks[i]+ "\"", function(response)
       {
-        console.log(results[0].title);
-        if (idArray.indexOf(results[0].id) == -1) //Only add if not already in array, causes deezer errors otherwise
-        { 
-          idArray.push(results[0].id);
-        }
-      }
-      else{
-        console.log("track not found");
-        //Highlight in Red in List
-      }
-      if (apiCallsDone == nb_tracks)
-      {
-        console.log ("HI")
-        DZ.api("playlist/8684741542/tracks", "POST", {songs : idArray } , function(response)
+        var results = response.data
+        apiCallsDone ++;
+        if (results.length)
         {
-          console.log(response);
-        })
-      }
-    })
-  }
+          if (idArray.indexOf(results[0].id) == -1) //Only add if not already in array, causes deezer errors otherwise
+          { 
+            idArray.push(results[0].id);
+          }
+        }
+        else{
+          console.log("track not found");
+          //Highlight in Red in List
+        }
+        if (apiCallsDone == nb_tracks)
+        {
+          DZ.api("playlist/"+ setlistID +"/tracks", "POST", {songs : idArray } , function(response)
+          {
+            //Add error management
+            console.log(response);
+          })
+        }
+      })
+    }
+  })
 };
 
 document.querySelector("#createBut").addEventListener("click", function(){
