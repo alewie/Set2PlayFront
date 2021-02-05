@@ -63,7 +63,10 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
       if (results.length)
       {
         console.log(results[0].title);
-        idArray.push(results[0].id);
+        if (idArray.indexof(results[0].id) == -1) //Only add if not already in array, causes deezer errors otherwise
+        { 
+          idArray.push(results[0].id);
+        }
       }
       else{
         console.log("track not found");
