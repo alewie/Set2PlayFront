@@ -50,7 +50,7 @@ document.querySelector(".submit").addEventListener("click", function()
       var row = resultsDisplay.insertRow(idx+1);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
-      cell1.innerHTML = idx;  
+      cell1.innerHTML = idx+1;  
       cell2.innerHTML = response.data[idx].name;
 
       setlistTracks[idx] = response.data[idx].name;
@@ -103,8 +103,10 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
             console.log(response);
             if (response == true)
             {
+              document.querySelector(".results-table").innerHTML = "The name of your Playlist is" + setlistArtist + "set2Play +need to add date. You can find it at the following link: <a href=https://www.deezer.com/en"+setlistID+">https://www.deezer.com/en"+setlistID+"</a>"
               document.querySelector(".results").style.display = "none" ;
               document.querySelector(".success").style.display = "flex" ;
+
             }
           })
         }
