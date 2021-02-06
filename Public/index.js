@@ -39,7 +39,11 @@ document.querySelector(".submit").addEventListener("click", function()
     document.querySelector(".search-box").style.display = "none"
 
     var resultsDisplay = document.querySelector(".results-table");
-    //resultsDisplay.innerHTML = "";
+    var nb_rows = resultsDisplay.rows.length
+    for (jdx = 1; jdx <nb_rows ; jdx++)
+    {
+      resultsDisplay.deleteRow(jdx);
+    }
     for(idx = 0; idx < response.data.length; idx++){
 
       var row = resultsDisplay.insertRow(idx+1);
@@ -103,7 +107,7 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
   })
 };
 
-document.querySelector(".createBut").addEventListener("click", function(){
+document.querySelectorAll(".createBut").addEventListener("click", function(){
   
     getDeezerTrackId(setlistArtist, setlistTracks, setlistTracks.length);
 
@@ -123,7 +127,7 @@ function login() {
   }, { perms: 'email, manage_library' });
 };
 
-document.querySelector(".searchbut").addEventListener("click", function()
+document.querySelectorAll(".searchbut").addEventListener("click", function()
 {
   document.querySelector(".results").style.display = "none" ;
   document.querySelector(".search-box").style.display = "flex";
