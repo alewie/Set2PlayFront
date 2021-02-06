@@ -103,7 +103,7 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
             console.log(response);
             if (response == true)
             {
-              document.querySelector(".successText").innerHTML = "The name of your Playlist is" + setlistArtist + "set2Play +need to add date. You can find it at the following link: <a href=https://www.deezer.com/en"+setlistID+">https://www.deezer.com/en"+setlistID+"</a>"
+              document.querySelector(".successText").innerHTML = "The name of your Playlist is" + setlistArtist + "set2Play +need to add date. You can find it at the following link: <a href=https://www.deezer.com/en/playlist/"+setlistID+">https://www.deezer.com/en/playlist/"+setlistID+"</a>"
               document.querySelector(".results").style.display = "none" ;
               document.querySelector(".success").style.display = "flex" ;
 
