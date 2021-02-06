@@ -101,6 +101,11 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
           {
             //Add error management
             console.log(response);
+            if (response == true)
+            {
+              document.querySelector(".results").style.display = "none" ;
+              document.querySelector(".success").style.display = "flex" ;
+            }
           })
         }
       })
