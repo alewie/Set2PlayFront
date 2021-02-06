@@ -38,7 +38,7 @@ document.querySelector(".submit").addEventListener("click", function()
     
     document.querySelector(".search-box").style.display = "none"
 
-    var resultsDisplay = document.querySelector(".results");
+    var resultsDisplay = document.querySelector(".insert-results");
     resultsDisplay.innerHTML = "";
     for(idx = 0; idx < response.data.length; idx++){
       resultsDisplay.innerHTML += "<tr><td>"+idx +"</td> <td> "+ response.data[idx].name +"</td> </tr>";
