@@ -74,7 +74,8 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
 {
   idArray = [];
   var apiCallsDone = 0;
-  DZ.api("/user/me/playlists", "POST", {title : artist + "Set2Play + need to add date"}, function(response)
+  var date = new Date();
+  DZ.api("/user/me/playlists", "POST", {title : artist + " Set2Play " + date.getMonth()+1 +"/"+ date.getFullYear() }, function(response)
   {
     //ADD error management
     var setlistID = response.id;
@@ -103,7 +104,7 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
             console.log(response);
             if (response == true)
             {
-              document.querySelector(".successText").innerHTML = "The name of your Playlist is" + setlistArtist + "set2Play +need to add date. You can find it at the following link: <a href=https://www.deezer.com/en/playlist/"+setlistID+">https://www.deezer.com/en/playlist/"+setlistID+"</a>"
+              document.querySelector(".successText").innerHTML = "The name of your Playlist is" + setlistArtist + " Set2Play " + date.getMonth()+1 +"/"+ date.getFullYear() +". You can find it at the following link: <a href=https://www.deezer.com/en/playlist/"+setlistID+">https://www.deezer.com/en/playlist/"+setlistID+"</a> </br> You can edit the playlist name directly from deezer"
               document.querySelector(".results").style.display = "none" ;
               document.querySelector(".success").style.display = "flex" ;
 
