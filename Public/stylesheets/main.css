@@ -29,6 +29,11 @@ body {
   margin-bottom: 8px;
   color: white;
 }
+.setbut:hover{
+  border: 1px solid #121216;
+  color: #121216;
+
+}
 .searchbut{
   background-color: transparent;
   border: 1px solid white;
