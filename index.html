@@ -13,8 +13,8 @@
     <body>
       <div class="content">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <a class="navbar-brand navsize" href="./index.html">Set2Play</a>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <a class="navbar-brand navsize accent" href="./index.html">Set2Play</a>
             <button class="navbar-toggler navsize" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,24 +24,19 @@
                 <li class="nav-item navsize">
                   <a class="nav-link navsize" href="./about.html">About</a>
                 </li>
+                <li>
+                  <a class="nav-link navsize" onclick="login();" value="Login"> Login to Deezer</a>
+                </li>
               </ul>
             </div>
         </nav>
 
-        <div class="container margintop4">
-          <h1>This is the index page</h1>
-        </div>
+        <div class="search-box ">
+          <h1 class="accent">Welcome to Set2Play</h1>
+          <p>Convert any setlist from setlistfm into a Deezer playlist. To begin simply enter an artist name  or a setlist ID</p>
 
-        <div class="container">
-          <div class="form-row">
-            <div class="col">
+          <div>
               <input type="text" class="form-control userInput" placeholder="Enter Artist Name (eg: 'Iron Maiden')" id="userInput" name="setlistSelector">
-            </div>
-            <div class="col-auto">
-              <button class="btn btn-primary submit">Get Setlist</button>
-              <button class="btn btn-success submit" id="createBut">Create Playlist</button>
-              <button class="btn" onclick="login();" value="Login"> Login to Deezer</button>
-            </div>
           </div>
           <form class="RadioSetlist">
             <div class="form-check-inline">
@@ -57,10 +52,24 @@
               </label>
             </div>
           </form>
+          <div>
+            <button class="btn setbut submit">Get Setlist</button>
+          </div>
         </div>
 
-        <div class="container">
-          <p class="results"></p>
+        <div class="results">
+          <table class="table-dark table table-striped table-sm">
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+            </tr>
+            <div class="insert-results"> </div>
+          </table>
+          <div>
+            <button class="btn setbut" id="createBut">Create Playlist</button>
+            <button class="btn searchbut">Search Again</button>
+          </div>
+          <p>Tip: If searching by artist doesn't give you the playlist you are looking for, try searching by setlistID</p>
         </div>
         
 

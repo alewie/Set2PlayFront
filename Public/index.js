@@ -9,7 +9,7 @@ DZ.init({
 });
 
 
-document.getElementById("createBut").style.display = "none" ;
+document.querySelector(".results").style.display = "none" ;
 
 document.querySelector(".RadioSetlist").addEventListener("click", function()
 {
@@ -35,13 +35,16 @@ document.querySelector(".submit").addEventListener("click", function()
     //NEED error Management
     setlistTracks = [];
     setlistArtist = document.querySelector(".userInput").value; //TMP ONLY WILL CHANGE API TO RETURN ARTIST NAME TO BE SAFER
-    resultsDisplay = document.querySelector(".results");
-    resultsDisplay.innerHTML = "<br>";
+    
+    document.querySelector(".search-box").style.display = "none"
+
+    var resultsDisplay = document.querySelector(".results");
+    resultsDisplay.innerHTML = "";
     for(idx = 0; idx < response.data.length; idx++){
-      resultsDisplay.innerHTML += response.data[idx].name + "<br>";
+      resultsDisplay.innerHTML += "<tr><td>"+idx +"</td> <td> "+ response.data[idx].name +"</td> </tr>";
       setlistTracks[idx] = response.data[idx].name;
     }
-    document.getElementById("createBut").style.display = "flex" ;
+    document.querySelector(".results").style.display = "flex" ;
   })
 });
 
@@ -113,3 +116,10 @@ function login() {
       }
   }, { perms: 'email, manage_library' });
 };
+
+document.querySelector(".searchbut").addEventListener("click", function()
+{
+  document.querySelector(".results").style.display = "none" ;
+  document.querySelector(".search-box").style.display = "flex";
+
+});
