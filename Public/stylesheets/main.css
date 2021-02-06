@@ -47,7 +47,7 @@ body {
 
 .search-box {
   position: absolute;
-  top: 35%;
+  top: 40%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   width: 90%;
