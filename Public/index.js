@@ -107,13 +107,14 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
   })
 };
 
-document.querySelectorAll(".createBut").addEventListener("click", function(){
+function createPlaylist(){
   
     getDeezerTrackId(setlistArtist, setlistTracks, setlistTracks.length);
 
-});
+};
 
-function login() {
+function login() 
+{
   DZ.login(function (response) {
       if (response.authResponse) {
           console.log('Welcome!  Fetching your information.... ');
@@ -127,9 +128,9 @@ function login() {
   }, { perms: 'email, manage_library' });
 };
 
-document.querySelectorAll(".searchbut").addEventListener("click", function()
+ function returnToSearch()
 {
   document.querySelector(".results").style.display = "none" ;
   document.querySelector(".search-box").style.display = "flex";
 
-});
+};
