@@ -137,6 +137,7 @@ function login()
  function returnToSearch()
 {
   document.querySelector(".results").style.display = "none" ;
+  document.querySelector(".success").style.display = "none" ;
   document.querySelector(".search-box").style.display = "flex";
 
 };
