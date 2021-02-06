@@ -9,10 +9,6 @@ body {
     flex-direction: column;
   }
 
-th{
-  color: #fe447d;
-}
-
 .content {
   flex: 1 0 auto;
 }
@@ -30,6 +26,7 @@ th{
 .setbut{
   background-color: #fe447d;
   margin-top: 8px;
+  margin-bottom: 8px;
   color: white;
 }
 .searchbut{
@@ -37,6 +34,7 @@ th{
   border: 1px solid white;
   color: white;
   margin-top: 8px;
+  margin-bottom: 8px;
 }
 .searchbut:hover{
   background-color: transparent;
