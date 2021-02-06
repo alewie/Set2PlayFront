@@ -9,6 +9,10 @@ body {
     flex-direction: column;
   }
 
+th{
+  color: #fe447d;
+}
+
 .content {
   flex: 1 0 auto;
 }
