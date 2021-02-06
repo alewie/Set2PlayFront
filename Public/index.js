@@ -41,9 +41,9 @@ document.querySelector(".submit").addEventListener("click", function()
     var resultsDisplay = document.querySelector(".results-table");
     var nb_rows = resultsDisplay.rows.length
     document.querySelector(".results").style.display = "flex" ;
-    for (jdx = 0; jdx <nb_rows-1 ; jdx++)
+    for (jdx = 0; jdx <nb_rows ; jdx++)
     {
-      resultsDisplay.deleteRow(jdx);
+      resultsDisplay.deleteRow(1);
       alert("pause");
     }
     for(idx = 0; idx < response.data.length; idx++){
