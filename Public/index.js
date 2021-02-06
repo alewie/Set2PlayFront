@@ -38,10 +38,16 @@ document.querySelector(".submit").addEventListener("click", function()
     
     document.querySelector(".search-box").style.display = "none"
 
-    var resultsDisplay = document.querySelector(".insert-results");
-    resultsDisplay.innerHTML = "";
+    var resultsDisplay = document.querySelector(".results-table");
+    //resultsDisplay.innerHTML = "";
     for(idx = 0; idx < response.data.length; idx++){
-      resultsDisplay.innerHTML += "<tr><td>"+idx +"</td> <td> "+ response.data[idx].name +"</td> </tr>";
+      
+      var row = resultsDisplay.insertRow(idx+1);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      cell1.innerHTML = idx;  
+      cell2.innerHTML = response.data[idx].name;
+
       setlistTracks[idx] = response.data[idx].name;
     }
     document.querySelector(".results").style.display = "flex" ;
