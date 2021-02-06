@@ -40,9 +40,10 @@ document.querySelector(".submit").addEventListener("click", function()
 
     var resultsDisplay = document.querySelector(".results-table");
     var nb_rows = resultsDisplay.rows.length
+    document.querySelector(".results").style.display = "flex" ;
     for (jdx = 0; jdx <nb_rows-1 ; jdx++)
     {
-      resultsDisplay.deleteRow(jdx+1);
+      resultsDisplay.deleteRow(jdx);
       alert("pause");
     }
     for(idx = 0; idx < response.data.length; idx++){
