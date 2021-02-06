@@ -43,6 +43,7 @@ document.querySelector(".submit").addEventListener("click", function()
     for (jdx = 0; jdx <nb_rows-1 ; jdx++)
     {
       resultsDisplay.deleteRow(jdx+1);
+      alert("pause");
     }
     for(idx = 0; idx < response.data.length; idx++){
 
