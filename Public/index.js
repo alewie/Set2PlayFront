@@ -34,7 +34,6 @@ document.querySelector(".submit").addEventListener("click", function()
   {
     //NEED error Management
     setlistTracks = [];
-    setlistArtist = document.querySelector(".userInput").value; //TMP ONLY WILL CHANGE API TO RETURN ARTIST NAME TO BE SAFER
     
     document.querySelector(".search-box").style.display = "none"
 
@@ -44,14 +43,16 @@ document.querySelector(".submit").addEventListener("click", function()
     {
       resultsDisplay.deleteRow(1);
     };
-    for(idx = 0; idx < response.data.length; idx++){
+    for(idx = 0; idx < response.data.length; idx++)
+    {
       var row = resultsDisplay.insertRow(idx+1);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       cell1.innerHTML = idx+1;  
       cell2.innerHTML = response.data[idx].name;
 
-      setlistTracks[idx] = response.data[idx].name;
+      setlistTracks[idx] = response.data.setlist[idx].name;
+      setlistArtist = response.data.artist;
     }
     document.querySelector(".results").style.display = "flex" ;
   })
@@ -130,7 +131,7 @@ function createPlaylist(){
         }
         else
         {
-            console.log('CPOuldnt log in');
+            console.log('Couldnt log in');
         }
       }, { perms: 'email, manage_library' });
     }
