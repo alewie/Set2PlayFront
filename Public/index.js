@@ -122,8 +122,15 @@ function createPlaylist(){
     }
     else
     {
-      console.log("PLease login"); 
-      login();	  
+      console.log("Please login"); 
+      DZ.login(function (response) {
+        if (response.authResponse)
+         {
+          getDeezerTrackId(setlistArtist, setlistTracks, setlistTracks.length);
+        } else {
+            console.log('CPOuldnt log in');
+        }
+    }, { perms: 'email, manage_library' });
     }
 };
 
