@@ -42,11 +42,9 @@ document.querySelector(".submit").addEventListener("click", function()
     var nb_rows = resultsDisplay.rows.length
     for (jdx = 0; jdx <nb_rows-1 ; jdx++)
     {
-      console.log(1);
       resultsDisplay.deleteRow(1);
     };
     for(idx = 0; idx < response.data.length; idx++){
-      console.log(2);
       var row = resultsDisplay.insertRow(idx+1);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
@@ -121,9 +119,9 @@ function createPlaylist(){
 
   DZ.getLoginStatus(function(response)
    {
+    console.log(response.authResponse);
     if (response.authResponse)
     {
-      console.log(response.authResponse);
       getDeezerTrackId(setlistArtist, setlistTracks, setlistTracks.length);
     }
     else
