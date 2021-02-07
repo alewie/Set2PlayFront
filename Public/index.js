@@ -102,7 +102,7 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
             console.log(response);
             if (response == true)
             {
-              document.querySelector(".successText").innerHTML = "The name of your Playlist is" + setlistArtist + " Set2Play " + date.getMonth()+1 +"/"+ date.getFullYear() +". You can find it at the following link: <a href=https://www.deezer.com/en/playlist/"+setlistID+">https://www.deezer.com/en/playlist/"+setlistID+"</a> </br> You can edit the playlist name directly from deezer"
+              document.querySelector(".successText").innerHTML = "The name of your Playlist is " + setlistArtist + " Set2Play " + date.getMonth()+1 +"/"+ date.getFullYear() +". You can find it at the following link: <a href=https://www.deezer.com/en/playlist/"+setlistID+">https://www.deezer.com/en/playlist/"+setlistID+"</a> </br> You can edit the playlist name directly from deezer"
               document.querySelector(".results").style.display = "none" ;
               document.querySelector(".success").style.display = "flex" ;
 
@@ -116,11 +116,7 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
 
 function createPlaylist(){
     
-
-  DZ.getLoginStatus(function(response)
-   {
-    console.log(response.status);
-    if (response.status = 'connected')
+    if (DZ.api('/user/me'))
     {
       getDeezerTrackId(setlistArtist, setlistTracks, setlistTracks.length);
     }
@@ -128,9 +124,6 @@ function createPlaylist(){
     {
       console.log("PLease login");  
     }
-  });
-
-
 };
 
 function login() 
