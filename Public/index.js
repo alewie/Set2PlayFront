@@ -103,7 +103,7 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
             console.log(response);
             if (response == true)
             {
-              document.querySelector(".successText").innerHTML = "The name of your Playlist is " + setlistArtist + " Set2Play " + date.getMonth()+1 +"/"+ date.getFullYear() +". You can find it at the following link: <a href=https://www.deezer.com/en/playlist/"+setlistID+">https://www.deezer.com/en/playlist/"+setlistID+"</a> </br> You can edit the playlist name directly from deezer"
+              document.querySelector(".successText").innerHTML = "<li>The name of your Playlist is <strong> " + setlistArtist + " Set2Play " + date.getMonth()+1 +"/"+ date.getFullYear() +"</strong></li> <li> You can find it at the following link: <strong> <a href=https://www.deezer.com/en/playlist/"+setlistID+">https://www.deezer.com/en/playlist/"+setlistID+"</a> </strong></li><li> You can edit the playlist name directly on the deezer website </li>"
               document.querySelector(".results").style.display = "none" ;
               document.querySelector(".success").style.display = "flex" ;
 
