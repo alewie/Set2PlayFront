@@ -122,7 +122,8 @@ function createPlaylist(){
     }
     else
     {
-      console.log("PLease login");  
+      console.log("PLease login"); 
+      login();	  
     }
 };
 
