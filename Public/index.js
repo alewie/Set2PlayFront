@@ -126,6 +126,7 @@ function createPlaylist(){
     }
     else
     {
+      console.log("login");
       DZ.login(function (response)
       {
         if (response.authResponse)
