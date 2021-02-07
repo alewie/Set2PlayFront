@@ -43,13 +43,13 @@ document.querySelector(".submit").addEventListener("click", function()
     {
       resultsDisplay.deleteRow(1);
     };
-    for(idx = 0; idx < response.data.length; idx++)
+    for(idx = 0; idx < response.data.setlist.length; idx++)
     {
       var row = resultsDisplay.insertRow(idx+1);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       cell1.innerHTML = idx+1;  
-      cell2.innerHTML = response.data[idx].name;
+      cell2.innerHTML = response.data.setlist[idx].name;
 
       setlistTracks[idx] = response.data.setlist[idx].name;
       setlistArtist = response.data.artist;
