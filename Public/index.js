@@ -125,28 +125,15 @@ function createPlaylist(){
       console.log("Please login"); 
       DZ.login(function (response) {
         if (response.authResponse)
-         {
+        {
           getDeezerTrackId(setlistArtist, setlistTracks, setlistTracks.length);
-        } else {
+        }
+        else
+        {
             console.log('CPOuldnt log in');
         }
-    }, { perms: 'email, manage_library' });
+      }, { perms: 'email, manage_library' });
     }
-};
-
-function login() 
-{
-  DZ.login(function (response) {
-      if (response.authResponse) {
-          console.log('Welcome!  Fetching your information.... ');
-          DZ.api('/user/me', function (response) {
-              console.log('Good to see you, ' + response.name + '.');
-          });
-          userToken = response.authResponse.accessToken;
-      } else {
-          console.log('User cancelled login or did not fully authorize.');
-      }
-  }, { perms: 'email, manage_library' });
 };
 
  function returnToSearch()
