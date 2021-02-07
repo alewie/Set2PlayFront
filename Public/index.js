@@ -119,8 +119,8 @@ function createPlaylist(){
 
   DZ.getLoginStatus(function(response)
    {
-    console.log(response.authResponse);
-    if (response.authResponse)
+    console.log(response.status);
+    if (response.status = 'connected')
     {
       getDeezerTrackId(setlistArtist, setlistTracks, setlistTracks.length);
     }
