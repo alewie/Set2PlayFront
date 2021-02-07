@@ -119,10 +119,15 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
 function createPlaylist(){
     
 
-  DZ.getLoginStatus(function(response) {
-    if (response.authResponse) {
+  DZ.getLoginStatus(function(response)
+   {
+    if (response.authResponse)
+    {
+      console.log(response.authResponse);
       getDeezerTrackId(setlistArtist, setlistTracks, setlistTracks.length);
-    } else {
+    }
+    else
+    {
       DZ.login(function (response)
       {
         if (response.authResponse)
