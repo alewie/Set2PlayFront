@@ -117,8 +117,25 @@ async function getDeezerTrackId(artist, tracks, nb_tracks)
 };
 
 function createPlaylist(){
-  
-    getDeezerTrackId(setlistArtist, setlistTracks, setlistTracks.length);
+    
+
+  DZ.getLoginStatus(function(response) {
+    if (response.authResponse) {
+      getDeezerTrackId(setlistArtist, setlistTracks, setlistTracks.length);
+    } else {
+      DZ.login(function (response)
+      {
+        if (response.authResponse)
+        {
+          getDeezerTrackId(setlistArtist, setlistTracks, setlistTracks.length);
+        } else
+        {
+            console.log('User cancelled login or did not fully authorize.');
+        }
+      }, { perms: 'email, manage_library' });
+    }
+  });
+
 
 };
 
